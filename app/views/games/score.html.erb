@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>The Longest Word — Results</h1>
+
+  
+
+  <div class="letters">
+    <% title = @state == :gg ? "Congratz!" : "Too bad!"  %>
+    <% final = @letters.pop %>
+    <% title.upcase.chars.each do |letter| %>
+      <div class="letter"><div><%= letter %></div></div>
+    <% end %>
+  </div>
+  <% if @state == :gg %>
+    <p><%= @word %> rewards you <%= @word.length %> points.</p>
+    <p>Your total score is <%= @new_score %>.</p>
+  <% elsif @state == :not_in_grid %>
+    <p><strong><%= @word %></strong> is not composed of <%= @letters.join(', ') %> or <%= final %>!</p>
+  <% else %>
+    <p><strong><%= @word %></strong> is not an English word.</p>
+    <% end %>
+    <%= link_to "Play again", new_path %>
+</div>
